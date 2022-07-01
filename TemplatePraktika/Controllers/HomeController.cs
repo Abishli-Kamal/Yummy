@@ -23,7 +23,10 @@ namespace TemplatePraktika.Controllers
             {
                 Images = await _context.Images.FirstOrDefaultAsync(),
                 Abouts = await _context.Abouts.FirstOrDefaultAsync(),
-                AboutCards=await _context.AboutCards.ToListAsync(),
+                AboutCards = await _context.AboutCards.ToListAsync(),
+                AboutCardones = await _context.AboutCardOnes.FirstOrDefaultAsync(),
+                FoodCategories= await _context.FoodCategories.ToListAsync(),
+                Foods=await _context.Foods.ToListAsync(),
             };
             return View(model);
         

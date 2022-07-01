@@ -7,9 +7,14 @@
   <ItemGroup>
     <Compile Remove="Migrations\20220616115109_CreateTableSetting.cs" />
     <Compile Remove="Migrations\20220616115109_CreateTableSetting.Designer.cs" />
+    <Compile Remove="Migrations\20220616215348_CreateDatabaseYummy.cs" />
+    <Compile Remove="Migrations\20220616215348_CreateDatabaseYummy.Designer.cs" />
+    <Compile Remove="Migrations\20220617061428_CreateTableIdentity.cs" />
+    <Compile Remove="Migrations\20220617061428_CreateTableIdentity.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.25" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.25" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.25" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.25">

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TemplatePraktika.DAL;
+using TemplatePraktika.Models;
 using TemplatePraktika.Services;
 
 namespace TemplatePraktika
@@ -32,7 +34,18 @@ namespace TemplatePraktika
                 op.UseSqlServer(_configuration.GetConnectionString("Default"));
             });
             services.AddControllersWithViews();
-            
+
+            services.AddIdentity<AppUser, IdentityRole>(option =>
+            {
+                option.Password.RequiredLength = 8;
+                option.Password.RequireDigit = true;
+                option.Password.RequireLowercase = true;
+                option.Password.RequireNonAlphanumeric = true;
+                option.Lockout.AllowedForNewUsers = true;
+                option.Lockout.MaxFailedAccessAttempts = 5;
+                option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(3);
+            }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
